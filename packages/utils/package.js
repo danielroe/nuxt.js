@@ -1,3 +1,6 @@
 export default {
-  build: true
+  build: true,
+  rollup: {
+    input: 'src/index.ts'
+  }
 }

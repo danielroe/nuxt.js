@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "moduleResolution": "node",
+    "allowJs": true,
+    "rootDir": "src",
+    "allowSyntheticDefaultImports": true,
+    "outDir": "dist",
+    "lib": ["esnext", "esnext.asynciterable", "dom"]
+  },
+  "exclude": ["test", "dist", "node_modules", "package.js"]
+}
