@@ -8,6 +8,7 @@ import replacePlugin from '@rollup/plugin-replace'
 import aliasPlugin from '@rollup/plugin-alias'
 import nodeResolvePlugin from '@rollup/plugin-node-resolve'
 import licensePlugin from 'rollup-plugin-license'
+import typescriptPlugin from 'rollup-plugin-typescript2'
 import defaultsDeep from 'lodash/defaultsDeep'
 
 import { builtins } from './builtins'
@@ -93,6 +94,15 @@ export default function rollupConfig ({
           ' * Website: https://nuxtjs.org',
           '*/'
         ].join('\n')
+      }),
+      typescriptPlugin({
+        tsconfigDefaults: {
+          compilerOptions: {
+            allowSyntheticDefaultImports: true,
+            lib: ['esnext', 'esnext.asynciterable', 'dom']
+          },
+          exclude: ['test', 'dist', 'node_modules', 'package.js']
+        }
       })
     ].concat(plugins)
   })

@@ -75,6 +75,7 @@
     "rimraf": "^3.0.2",
     "rollup": "^2.11.2",
     "rollup-plugin-license": "^2.1.0",
+    "rollup-plugin-typescript2": "^0.27.1",
     "sass-loader": "^8.0.2",
     "sort-package-json": "^1.44.0",
     "typescript": "~3.8",
