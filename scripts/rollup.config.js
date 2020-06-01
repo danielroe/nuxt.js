@@ -1,3 +1,5 @@
+// @ts-check
+
 import path from 'path'
 import { readJSONSync } from 'fs-extra'
 import jsonPlugin from '@rollup/plugin-json'
@@ -10,6 +12,26 @@ import defaultsDeep from 'lodash/defaultsDeep'
 
 import { builtins } from './builtins'
 
+/**
+ * @typedef {import('rollup').RollupOptions} RollupOptions
+ * @typedef {import('@rollup/plugin-alias').RollupAliasOptions} RollupAliasOptions
+ * @typedef {import('@rollup/plugin-replace').Replacement} Replacement
+ * @typedef {import('@rollup/plugin-node-resolve').RollupNodeResolveOptions} RollupNodeResolveOptions
+ * @typedef {{
+     rootDir?: string
+     replace?: Record<string, Replacement>
+     alias?: RollupAliasOptions
+     externals?: (string | RegExp)[]
+     resolve?: RollupNodeResolveOptions
+     input?: string
+   }} NuxtRollupOptions
+ */
+
+/**
+ * @param {RollupOptions & NuxtRollupOptions} rollupOptions
+ * @param {Record<string, any>} pkg
+ * @returns {Omit<RollupOptions, 'output'> & { output: import('rollup').OutputOptions }}
+ */
 export default function rollupConfig ({
   rootDir = process.cwd(),
   plugins = [],
