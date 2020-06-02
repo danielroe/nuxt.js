@@ -95,24 +95,23 @@ export default function rollupConfig ({
           '*/'
         ].join('\n')
       }),
-      typescriptPlugin({
-        tsconfig:
-          input.includes('.ts') &&
-          existsSync(path.resolve(rootDir, 'tsconfig.json'))
-            ? path.resolve(rootDir, 'tsconfig.json')
+      input.includes('.ts') &&
+        typescriptPlugin({
+          tsconfig: existsSync(path.join(rootDir, 'tsconfig.json'))
+            ? path.join(rootDir, 'tsconfig.json')
             : undefined,
-        tsconfigDefaults: {
-          compilerOptions: {
-            target: 'esnext',
-            moduleResolution: 'node',
-            rootDir: 'src',
-            declaration: true,
-            outDir: 'dist',
-            lib: ['esnext', 'esnext.asynciterable', 'dom']
-          },
-          exclude: ['test', 'dist', 'node_modules', 'package.js']
-        }
-      })
+          tsconfigDefaults: {
+            compilerOptions: {
+              rootDir: path.join(rootDir, 'src'),
+              outDir: path.join(rootDir, 'dist'),
+              target: 'esnext',
+              moduleResolution: 'node',
+              declaration: true,
+              lib: ['esnext', 'esnext.asynciterable', 'dom']
+            },
+            exclude: ['test', 'dist', 'node_modules', 'package.js']
+          }
+        })
     ].concat(plugins)
   })
 }

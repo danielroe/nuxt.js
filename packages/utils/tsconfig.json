@@ -1,12 +1,14 @@
 {
   "compilerOptions": {
-    "target": "esnext",
+    "target": "es2018",
+    "module": "esnext",
     "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
     "rootDir": "src",
     "declaration": true,
     "downlevelIteration": true,
     "outDir": "dist",
-    "lib": ["esnext", "esnext.asynciterable", "dom"]
+    "lib": ["esnext"]
   },
   "exclude": ["test", "dist", "node_modules", "package.js"]
 }
