@@ -4,6 +4,7 @@
   "repository": "nuxt/nuxt.js",
   "license": "MIT",
   "main": "dist/utils.js",
+  "types": "dist/index.d.ts",
   "files": [
     "dist"
   ],
@@ -16,6 +17,16 @@
     "serialize-javascript": "^3.1.0",
     "signal-exit": "^3.0.3",
     "ua-parser-js": "^0.7.21"
+  },
+  "devDependencies": {
+    "@types/fs-extra": "^9.0.1",
+    "@types/hash-sum": "^1.0.0",
+    "@types/lodash": "^4.14.154",
+    "@types/proper-lockfile": "^4.1.1",
+    "@types/semver": "^7.2.0",
+    "@types/serialize-javascript": "^1.5.0",
+    "@types/signal-exit": "^3.0.0",
+    "@types/ua-parser-js": "^0.7.33"
   },
   "publishConfig": {
     "access": "public"

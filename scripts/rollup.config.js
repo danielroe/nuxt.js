@@ -1,7 +1,7 @@
 // @ts-check
 
 import path from 'path'
-import { readJSONSync } from 'fs-extra'
+import { readJSONSync, existsSync } from 'fs-extra'
 import jsonPlugin from '@rollup/plugin-json'
 import commonjsPlugin from '@rollup/plugin-commonjs'
 import replacePlugin from '@rollup/plugin-replace'
@@ -96,9 +96,18 @@ export default function rollupConfig ({
         ].join('\n')
       }),
       typescriptPlugin({
+        tsconfig:
+          input.includes('.ts') &&
+          existsSync(path.resolve(rootDir, 'tsconfig.json'))
+            ? path.resolve(rootDir, 'tsconfig.json')
+            : undefined,
         tsconfigDefaults: {
           compilerOptions: {
-            allowSyntheticDefaultImports: true,
+            target: 'esnext',
+            moduleResolution: 'node',
+            rootDir: 'src',
+            declaration: true,
+            outDir: 'dist',
             lib: ['esnext', 'esnext.asynciterable', 'dom']
           },
           exclude: ['test', 'dist', 'node_modules', 'package.js']
