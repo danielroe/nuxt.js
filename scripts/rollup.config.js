@@ -26,12 +26,13 @@ import { builtins } from './builtins'
      resolve?: RollupNodeResolveOptions
      input?: string
    }} NuxtRollupOptions
+  * @typedef {Omit<RollupOptions, 'output'> & { output: import('rollup').OutputOptions }} NuxtRollupConfig
  */
 
 /**
  * @param {RollupOptions & NuxtRollupOptions} rollupOptions
  * @param {Record<string, any>} pkg
- * @returns {Omit<RollupOptions, 'output'> & { output: import('rollup').OutputOptions }}
+ * @returns {NuxtRollupConfig}
  */
 export default function rollupConfig ({
   rootDir = process.cwd(),

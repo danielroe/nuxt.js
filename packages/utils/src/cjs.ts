@@ -1,3 +1,5 @@
+import { join } from 'path'
+
 export function isExternalDependency (id: string) {
   return /[/\\]node_modules[/\\]/.test(id)
 }
@@ -61,5 +63,5 @@ export function tryRequire (id: string) {
 }
 
 export function getPKG (id: string) {
-  return tryRequire(id + '/package.json')
+  return tryRequire(join(id, 'package.json'))
 }
